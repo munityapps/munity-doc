@@ -1,0 +1,49 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to Munity documentation\n\n\nWhat is Munity\n\n\nMunity is an already working data visualization and reaction platform.\n\n\n\n\nMunity is highly customizable with its plugin system\n\n\nMunity as already many plugins to enhance your platform\n\n\nMunity can handle many busness case\n\n\n\n\nOur goal :\n\n\n\n\nAccelerate all platform project based on data for at least 6 months\n\n\nFocused on community, open source first\n\n\nBest practice and always match best practices\n\n\n\n\nArchitecture\n\n\nHow to start\n\n\n\n\n\n\nUse git clone\n\n\n\n\n\n\nUse docker-compose\n\n\n\n\n\n\nUse kubernetes",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-munity-documentation",
+            "text": "",
+            "title": "Welcome to Munity documentation"
+        },
+        {
+            "location": "/#what-is-munity",
+            "text": "Munity is an already working data visualization and reaction platform.   Munity is highly customizable with its plugin system  Munity as already many plugins to enhance your platform  Munity can handle many busness case   Our goal :   Accelerate all platform project based on data for at least 6 months  Focused on community, open source first  Best practice and always match best practices",
+            "title": "What is Munity"
+        },
+        {
+            "location": "/#architecture",
+            "text": "",
+            "title": "Architecture"
+        },
+        {
+            "location": "/#how-to-start",
+            "text": "Use git clone    Use docker-compose    Use kubernetes",
+            "title": "How to start"
+        },
+        {
+            "location": "/about/",
+            "text": "About Us\n\n\nSupport\n\n\nCreate issue",
+            "title": "About"
+        },
+        {
+            "location": "/about/#about-us",
+            "text": "",
+            "title": "About Us"
+        },
+        {
+            "location": "/about/#support",
+            "text": "",
+            "title": "Support"
+        },
+        {
+            "location": "/about/#create-issue",
+            "text": "",
+            "title": "Create issue"
+        }
+    ]
+}
