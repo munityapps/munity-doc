@@ -1,0 +1,5 @@
+site_name: Munity documentation
+nav:
+    - Home: index.md
+    - About Us: about.md
+theme: readthedocs
