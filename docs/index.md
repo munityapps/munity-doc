@@ -16,7 +16,7 @@ Our goal :
 
 ## Architecture
 
-![Architecture](arch.png){ align=left }
+![Architecture](arch.png)
 
 We use docker to work in local environment
 We use kubernetes to deploy in production
@@ -70,11 +70,3 @@ As said before, we choose ***Redis*** to sync Munity services togethere with obs
 
 ### Websocket
 To update client from server we add a websocket server. It is a simply ***NodeJS*** server with ***socket.io*** connected to redis Pubsub to forward event to clients over channal.
-
-## How to start
-
-* Use git clone
-
-* Use docker-compose
-
-* Use kubernetes

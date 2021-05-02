@@ -1,5 +1,5 @@
 site_name: Munity documentation
 nav:
-    - Home: index.md
-    - About Us: about.md
+    - What is Munity: index.md
+    - How to start: howtostart.md
 theme: readthedocs
