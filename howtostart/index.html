@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>How to start - Munity documentation</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to start";
+    var mkdocs_page_input_path = "howtostart.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Munity documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">What is Munity</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">How to start</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#get-the-code">Get the code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prepare-environment">Prepare environment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#start-munity">Start Munity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#for-developer-environment">For developer environment</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#bind-local-sources-to-docker">Bind local sources to docker</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#use-yarn-start-from-docker">Use yarn start from docker</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#access-database-from-the-outside">Access database from the outside</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#all-in-one">All in one</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Munity documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to start</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="how-to-start">How to start</h1>
+<h2 id="get-the-code">Get the code</h2>
+<pre><code>git clone git@github.com:munityapps/munity.git
+cd munity
+</code></pre>
+<h2 id="prepare-environment">Prepare environment</h2>
+<p>In <code>.env</code> file set correct variables depending on your projet :</p>
+<pre><code># URLS
+HOMEPAGE_URL=localhost
+APP_SUFFIX_URL=localhost
+API_SUFFIX_URL=api.localhost
+
+# API
+API_DEBUG=True
+GUNICORN_WORKER_NUMBER=5
+API_LOG_LEVEL=debug
+DB_HOST=db
+DB_PORT=5432
+DEFAULT_DB_NAME=munity
+
+# DB
+POSTGRES_PORT=5432
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=****************
+PGDATA=/var/lib/postgresql/data
+</code></pre>
+<h2 id="start-munity">Start Munity</h2>
+<p>First your need to run the initialization script</p>
+<pre><code>./scripts/initialisation.sh
+</code></pre>
+<p>It will :</p>
+<ul>
+<li>Create munity and scheduler databases</li>
+<li>Migrate database to last version</li>
+<li>Prepare and start all service on current environement</li>
+</ul>
+<p>Once initialization has been done one time, you just have to start project with :</p>
+<pre><code>docker-compose up -d
+</code></pre>
+<h2 id="for-developer-environment">For developer environment</h2>
+<h3 id="bind-local-sources-to-docker">Bind local sources to docker</h3>
+<p>Code is copied in docker images at build, so if you change the code it will not update living code without rebuild your dockers.</p>
+<p>To have a better developper experience you can simply create a copy from your local code to docker code directly.</p>
+<p>To do so you have to create a new project file (that is git ignored) named <code>docker-compose.override.yaml</code> with following content :</p>
+<pre><code>version: '3.7'
+
+services:
+    api:
+        volumes:
+            - ./api:/usr/src/app
+    celery_worker:
+        volumes:
+            - ./api:/usr/src/app
+    celery_beat:
+        volumes:
+            - ./api:/usr/src/app
+    app:
+        volumes:
+            - ./app:/var/www
+</code></pre>
+<h3 id="use-yarn-start-from-docker">Use yarn start from docker</h3>
+<p>Futhermore, if you want to start React project in "server mode" to activate hot reload and other dev tools you can bind serve port in same file :</p>
+<pre><code>version: '3.7'
+
+services:
+    app:
+        ports :
+            - 3000:3000
+</code></pre>
+<p>This will permit to start app project with <code>docker-compose exec app yarn start</code> and go to <code>http://localhost:3000</code> for developement purpose.
+<strong>Important :</strong> Since Munity detect backend url from frontend URL. You probabily have to adapt the backend URL in localstorage. Key is <code>munity_api_url</code>.</p>
+<h3 id="access-database-from-the-outside">Access database from the outside</h3>
+<p>By using the same approch you can bind Timescale database (postgresql in fact) to outside :</p>
+<pre><code>version: '3.7'
+
+services:
+    db:
+        ports :
+            - 65432:5432
+</code></pre>
+<p>You can connect to your database with client that you want on URL : <code>localhost:65432</code>.</p>
+<h3 id="all-in-one">All in one</h3>
+<p>If you want all these modification you just have to create <code>docker-compose.override.yaml</code> file with following content :</p>
+<pre><code>version: '3.7'
+
+services:
+    api:
+        volumes:
+            - ./api:/usr/src/app
+    celery_worker:
+        volumes:
+            - ./api:/usr/src/app
+    celery_beat:
+        volumes:
+            - ./api:/usr/src/app
+    app:
+        volumes:
+            - ./app:/var/www
+        ports :
+            - 3000:3000
+    db:
+        ports :
+            - 65432:5432
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href=".." class="btn btn-neutral" title="What is Munity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
