@@ -1,40 +1,93 @@
 # Welcome to Munity documentation
 
+This document has been generated to this repository : https://github.com/munityapps/munity-doc
+Feel free to report [Issues](https://github.com/munityapps/munity-doc/issues) or send your [Pullrequests](https://github.com/munityapps/munity-doc/pulls) to improve it.
+
+![Discord](./discord.jpg)
+
+Or just report any problem to our discord : [https://discord.gg/6zmcnvnh](https://discord.gg/6zmcnvnh)
+
+Thank you a lot !
+
 ## What is Munity
 
-Munity is a platform to build your SaaS faster!
+Munity is a fullstack framework to build your SaaS really fast! It handles all configurations to start your SaaS
 
-* Munity can handle many busness case
-* Munity respects best design pattern and is based on famous open source software.
-* Munity is higly customizable
+- A **Progressive Web App** with ReactJS, Redux, i18n, Prime React, Websocket... build with Typescript!
+- An **API** build with django rest framework, already setup with many plugins (JWT, Timeseries DB, Mailing, Scheduler...)
+- A docker configuration to start on local or **deploy** on your server, we can also handle **hosting** for you
 
-Our goal :
+Our goals :
 
-* Accelerate all project based on data
-* Focused on community, open source first
-* Be the best modular platform on internet
+* Accelerate all web project creation
+* Help teams to build **togethere** and following **same** best practices
+* **Learn** from community to **improve** community experience
 
-## Architecture
+## Munity main concepts
+
+There is two place to be in Munity
+
+- Overmind
+- Workspaces
+
+At connection we check if an user has access to overmind or wanted workspace.
+
+### Overmind
+
+The overmind can be access from the root route of your platform :
+
+http://localhost/
+
+The overmind is a place where you can access **all** your platform information, you will find :
+- A dashboard with metrics to have an overview on what's append
+- A list of workspaces (see below)
+- All your platform users seprated in "Workspace users" and "Superusers".
+
+### Workspaces
+
+You client informations are separated in different workspaces.
+User can have access to one or many users
+
+Workspace has it's own model registered in its area / database but some models are cross workspaces :
+- User list are located in overmind
+- Roles and rights are common for all workspaces
+
+### Model available out of the box
+
+Munity framework came with the following models.
+
+- **Workspaces** : module `munityapps/workspace` , the needed tooling to work with workspaces
+- **User** : module `munityapps/user`
+- **GenericGroup** : module `munityapps/genericgroups` , all models can be groupable. There are the basic mechanisme to assemble things togethere.
+- **Role** : It is used in Munity to give access to a given resource to a user
+- **Permission** : Role has permissions on resources. Permissions can be : list, retreive, update, create or delete. They exists for each resources.
+
+With each of them list, form and a complete live cycle is already available.
+
+## Munity MOJOs
+
+* "The code you write makes you a programmer. The code you delete makes you a good one. The code you don't have to write makes you a great one." - Mario Fusco
+* "Keep it simple stupid"
+* "Simplicity is the ultimate sophistication" - Leonardo da Vinci
+
+## technical stack
 
 ![Architecture](arch.png)
 
 We use docker to work in local environment
 We use kubernetes to deploy in production
 
-Munity has 8 services :
+Munity has 5 main services :
 
 - Web proxy
 - Frontend
 - Backend
 - Timeseries/Relationnal database
-- Data warehouse
-- Scheduler (worker and beat)
-- Pubsub and volatile database
 - Websocket
 
 ### Web proxy
-We choose ***Traefik*** as a proxy because it is really simple to use and powerful. Moreover, traefik works well with kubernetes.
-The configuration through label (for docker) and charts (for kubernetes) remove the needs to build a configuration file. It is very convenient.
+We choose ***Traefik*** as a proxy because it is really simple to use and powerful.
+There is no configuration files needed only params in docker-compose.yml.
 
 ### Frontend
 - We choose ***React*** with ***Timescript*** to build Munity frontend. We really like the component approch of React and the community built around.
@@ -56,17 +109,6 @@ To make functional test we use ***Newman*** from ***Postman*** to test all endpo
 ### Timeseries and relational database
 ***PostgresSQL*** has many interesting features, for exemple NoSQL embed in SQL Relationnal is a smart approch.
 Since we work with Data, a timeseries database is a mandatory for performance and scalability, so we use the ***Timescale*** surcharge.
-
-### Data warehouse
-Data can be collected and stored directly in previous backend service. But we think it's a better approch to isolated data collected in a dedicated service.
-To do so, we use ***FastAPI*** because it is very fast and simple to use. It is writted in Python as all backend services.
-
-### Scheduler
-Again, we search a python service to run the scheduler. Django recommand to use ***Celery*** so we implement it with redis as Pubsub event and result storage.
-We use ***django celery beat*** to store scheduled task directly on database.
-
-### Pubsub and volatile database
-As said before, we choose ***Redis*** to sync Munity services togethere with observer pattern. It is also used to cache and to store volatile data.
 
 ### Websocket
 To update client from server we add a websocket server. It is a simply ***NodeJS*** server with ***socket.io*** connected to redis Pubsub to forward event to clients over channal.
