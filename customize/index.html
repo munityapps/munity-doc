@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>How to start - Munity documentation</title>
+  <title>Customize - Munity documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "How to start";
-    var mkdocs_page_input_path = "howtostart.md";
+    var mkdocs_page_name = "Customize";
+    var mkdocs_page_input_path = "customize.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -50,38 +50,48 @@
                     <li class="toctree-l1"><a class="reference internal" href="..">What is Munity</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">How to start</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-use-munity">How to use Munity</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#get-started">Get started</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#start-munity-the-easy-way">Start Munity, the easy way</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#start-munity-step-by-step">Start Munity step by step</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#get-munity">Get munity</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#start-munity-services">Start Munity services</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#create-your-database-and-migrate">Create your database and migrate</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#database-is-now-available-restart-api">Database is now available, restart API</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#create-your-first-user">Create your first user</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#start-frontend">Start frontend</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../howtostart/">How to start</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../customize/">Customize</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Customize</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#understand-how-boilerplate-is-construct">Understand how boilerplate is construct</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend-the-srcindexts-file">Frontend, the src/index.ts file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#backend-the-projetsettingspy-file">Backend, the projet/settings.py file</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#add-a-new-model-with-a-full-crud">Add a new model with a full CRUD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#backend-part">Backend part</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend-part">Frontend part</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#add-new-route">Add new route</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#backend-route">Backend route</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend-route">Frontend route</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#improve-navbars">Improve navbars</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#change-layout">Change layout</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#change-current-theme">Change current theme</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-extend-currend-user">How to extend currend user</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-create-group-categories">How to create group categories</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <ul>
@@ -109,7 +119,7 @@
     
       
     
-    <li>How to start</li>
+    <li>Customize</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -121,46 +131,21 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="how-to-use">How to use</h1>
-<h2 id="how-to-use-munity">How to use Munity</h2>
-<ul>
-<li>Munity is an open source fullstack framework so you can read all the source code here : https://github.com/munityapps/munity</li>
-<li>To use Munity <strong>you need a boilerplate</strong></li>
-</ul>
-<p><img alt="What is a boilerplate" src="../boilerplate_stack.png" /></p>
-<ul>
-<li>A boilerplate is an already ready to use application that is plugged to Munity through packages.</li>
-<li>Blank boilerplate : https://github.com/munityapps/blank_boilerplate</li>
-<li>Backoffice, Dataviz and other boilerplate will come soon</li>
-</ul>
-<h2 id="get-started">Get started</h2>
-<h3 id="start-munity-the-easy-way">Start Munity, the easy way</h3>
-<pre><code>git clone https://github.com/munityapps/blank_boilerplate
-cd blank_boilerplate
-cp ./env.sample ./.env
-./scripts/start.sh
-</code></pre>
-<h3 id="start-munity-step-by-step">Start Munity step by step</h3>
-<h4 id="get-munity">Get munity</h4>
-<pre><code>git clone https://github.com/munityapps/blank_boilerplate
-cd blank_boilerplate
-</code></pre>
-<h4 id="start-munity-services">Start Munity services</h4>
-<pre><code>docker-compose up -d
-</code></pre>
-<h4 id="create-your-database-and-migrate">Create your database and migrate</h4>
-<pre><code>docker-compose exec db psql -U munityapps -c &quot;create database munity&quot;
-docker-compose exec api python manage.py migrate
-</code></pre>
-<h4 id="database-is-now-available-restart-api">Database is now available, restart API</h4>
-<pre><code>docker-compose restart api
-</code></pre>
-<h4 id="create-your-first-user">Create your first user</h4>
-<pre><code>docker-compose exec api python manage.py createsuperuser
-</code></pre>
-<h4 id="start-frontend">Start frontend</h4>
-<pre><code>cd app ; yarn install ; yarn start
-</code></pre>
+                <h1 id="customization">Customization</h1>
+<h2 id="understand-how-boilerplate-is-construct">Understand how boilerplate is construct</h2>
+<h3 id="frontend-the-srcindexts-file">Frontend, the src/index.ts file</h3>
+<h3 id="backend-the-projetsettingspy-file">Backend, the projet/settings.py file</h3>
+<h2 id="add-a-new-model-with-a-full-crud">Add a new model with a full CRUD</h2>
+<h3 id="backend-part">Backend part</h3>
+<h3 id="frontend-part">Frontend part</h3>
+<h2 id="add-new-route">Add new route</h2>
+<h3 id="backend-route">Backend route</h3>
+<h3 id="frontend-route">Frontend route</h3>
+<h2 id="improve-navbars">Improve navbars</h2>
+<h2 id="change-layout">Change layout</h2>
+<h2 id="change-current-theme">Change current theme</h2>
+<h2 id="how-to-extend-currend-user">How to extend currend user</h2>
+<h2 id="how-to-create-group-categories">How to create group categories</h2>
               
             </div>
           </div>
@@ -168,10 +153,10 @@ docker-compose exec api python manage.py migrate
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../customize/" class="btn btn-neutral float-right" title="Customize">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../gethelp/" class="btn btn-neutral float-right" title="Get help">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="What is Munity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../howtostart/" class="btn btn-neutral" title="How to start"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -197,10 +182,10 @@ docker-compose exec api python manage.py migrate
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../howtostart/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../customize/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../gethelp/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

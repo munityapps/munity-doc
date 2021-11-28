@@ -10,9 +10,11 @@
   
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>Munity documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
   <script>
     // Current page data
@@ -23,9 +25,8 @@
   
   <script src="js/jquery-2.1.1.min.js" defer></script>
   <script src="js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
-  
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -39,7 +40,7 @@
         <a href="." class="icon icon-home"> Munity documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
@@ -50,7 +51,19 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#what-is-munity">What is Munity</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a>
+    <li class="toctree-l2"><a class="reference internal" href="#munity-main-concepts">Munity main concepts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#overmind">Overmind</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#workspaces">Workspaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#model-available-out-of-the-box">Model available out of the box</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#munity-mojos">Munity MOJOs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#technical-stack">technical stack</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#web-proxy">Web proxy</a>
     </li>
@@ -59,12 +72,6 @@
     <li class="toctree-l3"><a class="reference internal" href="#backend">Backend</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#timeseries-and-relational-database">Timeseries and relational database</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#data-warehouse">Data warehouse</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#scheduler">Scheduler</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#pubsub-and-volatile-database">Pubsub and volatile database</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#websocket">Websocket</a>
     </li>
@@ -75,6 +82,14 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="howtostart/">How to start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="customize/">Customize</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="gethelp/">Get help</a>
                     </li>
                 </ul>
       </div>
@@ -106,41 +121,80 @@
   
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
                 <h1 id="welcome-to-munity-documentation">Welcome to Munity documentation</h1>
+<p>This document has been generated to this repository : https://github.com/munityapps/munity-doc
+Feel free to report <a href="https://github.com/munityapps/munity-doc/issues">Issues</a> or send your <a href="https://github.com/munityapps/munity-doc/pulls">Pullrequests</a> to improve it.</p>
+<p><img alt="Discord" src="discord.jpg" /></p>
+<p>Or just report any problem to our discord : <a href="https://discord.gg/6zmcnvnh">https://discord.gg/6zmcnvnh</a></p>
+<p>Thank you a lot !</p>
 <h2 id="what-is-munity">What is Munity</h2>
-<p>Munity is a platform to build your SaaS faster!</p>
+<p>Munity is a fullstack framework to build your SaaS really fast! It handles all configurations to start your SaaS</p>
 <ul>
-<li>Munity can handle many busness case</li>
-<li>Munity respects best design pattern and is based on famous open source software.</li>
-<li>Munity is higly customizable</li>
+<li>A <strong>Progressive Web App</strong> with ReactJS, Redux, i18n, Prime React, Websocket... build with Typescript!</li>
+<li>An <strong>API</strong> build with django rest framework, already setup with many plugins (JWT, Timeseries DB, Mailing, Scheduler...)</li>
+<li>A docker configuration to start on local or <strong>deploy</strong> on your server, we can also handle <strong>hosting</strong> for you</li>
 </ul>
-<p>Our goal :</p>
+<p>Our goals :</p>
 <ul>
-<li>Accelerate all project based on data</li>
-<li>Focused on community, open source first</li>
-<li>Be the best modular platform on internet</li>
+<li>Accelerate all web project creation</li>
+<li>Help teams to build <strong>togethere</strong> and following <strong>same</strong> best practices</li>
+<li><strong>Learn</strong> from community to <strong>improve</strong> community experience</li>
 </ul>
-<h2 id="architecture">Architecture</h2>
+<h2 id="munity-main-concepts">Munity main concepts</h2>
+<p>There is two place to be in Munity</p>
+<ul>
+<li>Overmind</li>
+<li>Workspaces</li>
+</ul>
+<p>At connection we check if an user has access to overmind or wanted workspace.</p>
+<h3 id="overmind">Overmind</h3>
+<p>The overmind can be access from the root route of your platform :</p>
+<p>http://localhost/</p>
+<p>The overmind is a place where you can access <strong>all</strong> your platform information, you will find :
+- A dashboard with metrics to have an overview on what's append
+- A list of workspaces (see below)
+- All your platform users seprated in "Workspace users" and "Superusers".</p>
+<h3 id="workspaces">Workspaces</h3>
+<p>You client informations are separated in different workspaces.
+User can have access to one or many users</p>
+<p>Workspace has it's own model registered in its area / database but some models are cross workspaces :
+- User list are located in overmind
+- Roles and rights are common for all workspaces</p>
+<h3 id="model-available-out-of-the-box">Model available out of the box</h3>
+<p>Munity framework came with the following models.</p>
+<ul>
+<li><strong>Workspaces</strong> : module <code>munityapps/workspace</code> , the needed tooling to work with workspaces</li>
+<li><strong>User</strong> : module <code>munityapps/user</code></li>
+<li><strong>GenericGroup</strong> : module <code>munityapps/genericgroups</code> , all models can be groupable. There are the basic mechanisme to assemble things togethere.</li>
+<li><strong>Role</strong> : It is used in Munity to give access to a given resource to a user</li>
+<li><strong>Permission</strong> : Role has permissions on resources. Permissions can be : list, retreive, update, create or delete. They exists for each resources.</li>
+</ul>
+<p>With each of them list, form and a complete live cycle is already available.</p>
+<h2 id="munity-mojos">Munity MOJOs</h2>
+<ul>
+<li>"The code you write makes you a programmer. The code you delete makes you a good one. The code you don't have to write makes you a great one." - Mario Fusco</li>
+<li>"Keep it simple stupid"</li>
+<li>"Simplicity is the ultimate sophistication" - Leonardo da Vinci</li>
+</ul>
+<h2 id="technical-stack">technical stack</h2>
 <p><img alt="Architecture" src="arch.png" /></p>
 <p>We use docker to work in local environment
 We use kubernetes to deploy in production</p>
-<p>Munity has 8 services :</p>
+<p>Munity has 5 main services :</p>
 <ul>
 <li>Web proxy</li>
 <li>Frontend</li>
 <li>Backend</li>
 <li>Timeseries/Relationnal database</li>
-<li>Data warehouse</li>
-<li>Scheduler (worker and beat)</li>
-<li>Pubsub and volatile database</li>
 <li>Websocket</li>
 </ul>
 <h3 id="web-proxy">Web proxy</h3>
-<p>We choose <strong><em>Traefik</em></strong> as a proxy because it is really simple to use and powerful. Moreover, traefik works well with kubernetes.
-The configuration through label (for docker) and charts (for kubernetes) remove the needs to build a configuration file. It is very convenient.</p>
+<p>We choose <strong><em>Traefik</em></strong> as a proxy because it is really simple to use and powerful.
+There is no configuration files needed only params in docker-compose.yml.</p>
 <h3 id="frontend">Frontend</h3>
 <ul>
 <li>We choose <strong><em>React</em></strong> with <strong><em>Timescript</em></strong> to build Munity frontend. We really like the component approch of React and the community built around.</li>
@@ -162,14 +216,6 @@ To make functional test we use <strong><em>Newman</em></strong> from <strong><em
 <h3 id="timeseries-and-relational-database">Timeseries and relational database</h3>
 <p><strong><em>PostgresSQL</em></strong> has many interesting features, for exemple NoSQL embed in SQL Relationnal is a smart approch.
 Since we work with Data, a timeseries database is a mandatory for performance and scalability, so we use the <strong><em>Timescale</em></strong> surcharge.</p>
-<h3 id="data-warehouse">Data warehouse</h3>
-<p>Data can be collected and stored directly in previous backend service. But we think it's a better approch to isolated data collected in a dedicated service.
-To do so, we use <strong><em>FastAPI</em></strong> because it is very fast and simple to use. It is writted in Python as all backend services.</p>
-<h3 id="scheduler">Scheduler</h3>
-<p>Again, we search a python service to run the scheduler. Django recommand to use <strong><em>Celery</em></strong> so we implement it with redis as Pubsub event and result storage.
-We use <strong><em>django celery beat</em></strong> to store scheduled task directly on database.</p>
-<h3 id="pubsub-and-volatile-database">Pubsub and volatile database</h3>
-<p>As said before, we choose <strong><em>Redis</em></strong> to sync Munity services togethere with observer pattern. It is also used to cache and to store volatile data.</p>
 <h3 id="websocket">Websocket</h3>
 <p>To update client from server we add a websocket server. It is a simply <strong><em>NodeJS</em></strong> server with <strong><em>socket.io</em></strong> connected to redis Pubsub to forward event to clients over channal.</p>
               
@@ -203,15 +249,16 @@ We use <strong><em>django celery beat</em></strong> to store scheduled task dire
   </div>
 
   <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-      
-        <span style="margin-left: 15px"><a href="howtostart/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="howtostart/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
     <script src="js/theme.js" defer></script>
       <script src="search/main.js" defer></script>
     <script defer>
@@ -224,6 +271,6 @@ We use <strong><em>django celery beat</em></strong> to store scheduled task dire
 </html>
 
 <!--
-MkDocs version : 1.1.2
-Build Date UTC : 2021-05-02 09:35:12.281542+00:00
+MkDocs version : 1.2.3
+Build Date UTC : 2021-11-28 02:06:38.781648+00:00
 -->
