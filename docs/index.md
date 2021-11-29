@@ -32,6 +32,8 @@ There is two place to be in Munity
 
 At connection we check if an user has access to overmind or wanted workspace.
 
+![overmindworkspace](overmind.png)
+
 ### Overmind
 
 The overmind can be access from the root route of your platform :
