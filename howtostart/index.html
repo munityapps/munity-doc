@@ -60,20 +60,6 @@
     <li class="toctree-l3"><a class="reference internal" href="#start-munity-the-easy-way">Start Munity, the easy way</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#start-munity-step-by-step">Start Munity step by step</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#get-munity">Get munity</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#start-munity-services">Start Munity services</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#create-your-database-and-migrate">Create your database and migrate</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#database-is-now-available-restart-api">Database is now available, restart API</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#create-your-first-user">Create your first user</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#start-frontend">Start frontend</a>
-    </li>
-        </ul>
     </li>
         </ul>
     </li>
@@ -81,7 +67,11 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../customize/">Customize</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../importantfile/">Important files</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../managecustomcontent/">Manage custom content</a>
                     </li>
                 </ul>
                 <ul>
@@ -135,30 +125,31 @@
 </ul>
 <h2 id="get-started">Get started</h2>
 <h3 id="start-munity-the-easy-way">Start Munity, the easy way</h3>
-<pre><code>git clone https://github.com/munityapps/blank_boilerplate
+<pre><code class="language-shell">git clone https://github.com/munityapps/blank_boilerplate
 cd blank_boilerplate
 cp ./env.sample ./.env
 ./scripts/start.sh
 </code></pre>
+<p>You can access munity on <a href="http://localhost:3000">http://localhost:3000</a></p>
 <h3 id="start-munity-step-by-step">Start Munity step by step</h3>
-<h4 id="get-munity">Get munity</h4>
+<p><strong>Get munity boilerplate</strong></p>
 <pre><code>git clone https://github.com/munityapps/blank_boilerplate
 cd blank_boilerplate
 </code></pre>
-<h4 id="start-munity-services">Start Munity services</h4>
+<p><strong>Start Munity services</strong></p>
 <pre><code>docker-compose up -d
 </code></pre>
-<h4 id="create-your-database-and-migrate">Create your database and migrate</h4>
+<p><strong>Create your database and migrate</strong></p>
 <pre><code>docker-compose exec db psql -U munityapps -c &quot;create database munity&quot;
 docker-compose exec api python manage.py migrate
 </code></pre>
-<h4 id="database-is-now-available-restart-api">Database is now available, restart API</h4>
+<p><strong>Database is now available, restart API</strong></p>
 <pre><code>docker-compose restart api
 </code></pre>
-<h4 id="create-your-first-user">Create your first user</h4>
+<p><strong>Create your first user</strong></p>
 <pre><code>docker-compose exec api python manage.py createsuperuser
 </code></pre>
-<h4 id="start-frontend">Start frontend</h4>
+<p><strong>Start frontend</strong></p>
 <pre><code>cd app ; yarn install ; yarn start
 </code></pre>
               
@@ -168,7 +159,7 @@ docker-compose exec api python manage.py migrate
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../customize/" class="btn btn-neutral float-right" title="Customize">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../importantfile/" class="btn btn-neutral float-right" title="Important files">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href=".." class="btn btn-neutral" title="What is Munity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -200,7 +191,7 @@ docker-compose exec api python manage.py migrate
       <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../customize/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../importantfile/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

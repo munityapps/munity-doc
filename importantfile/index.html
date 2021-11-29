@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Customize - Munity documentation</title>
+  <title>Important files - Munity documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Customize";
-    var mkdocs_page_input_path = "customize.md";
+    var mkdocs_page_name = "Important files";
+    var mkdocs_page_input_path = "importantfile.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -55,29 +55,15 @@
                     </li>
                 </ul>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Customize</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Important files</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#understand-how-boilerplate-is-construct">Understand how boilerplate is construct</a>
+    <li class="toctree-l2"><a class="reference internal" href="#all-important-files">All important files :</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#frontend-the-srcindexts-file">Frontend, the src/index.ts file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#backend-the-projetsettingspy-file">Backend, the projet/settings.py file</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#frontend-the-srcindexts-file">Frontend, the src/index.ts file</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#backend-the-projetsettingspy-file">Backend, the projet/settings.py file</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#add-a-new-model-with-a-full-crud">Add a new model with a full CRUD</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#backend-part">Backend part</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#frontend-part">Frontend part</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#add-new-route">Add new route</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#backend-route">Backend route</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#frontend-route">Frontend route</a>
+    <li class="toctree-l3"><a class="reference internal" href="#add-new-route">Add new route</a>
     </li>
         </ul>
     </li>
@@ -92,6 +78,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#how-to-create-group-categories">How to create group categories</a>
     </li>
     </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../managecustomcontent/">Manage custom content</a>
                     </li>
                 </ul>
                 <ul>
@@ -119,7 +109,7 @@
     
       
     
-    <li>Customize</li>
+    <li>Important files</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -131,16 +121,92 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="customization">Customization</h1>
-<h2 id="understand-how-boilerplate-is-construct">Understand how boilerplate is construct</h2>
-<h3 id="frontend-the-srcindexts-file">Frontend, the src/index.ts file</h3>
-<h3 id="backend-the-projetsettingspy-file">Backend, the projet/settings.py file</h3>
-<h2 id="add-a-new-model-with-a-full-crud">Add a new model with a full CRUD</h2>
-<h3 id="backend-part">Backend part</h3>
-<h3 id="frontend-part">Frontend part</h3>
-<h2 id="add-new-route">Add new route</h2>
-<h3 id="backend-route">Backend route</h3>
-<h3 id="frontend-route">Frontend route</h3>
+                <h1 id="important-boilerplate-files">Important boilerplate files</h1>
+<h2 id="all-important-files">All important files :</h2>
+<pre><code>📦blank_boilerplate
+ ┣ 📂api
+ ┃ ┣ 📂project
+ ┃ ┃ ┣ 📜settings.py    //-&gt; your backend apps and middleware here
+ ┃ ┃ ┣ 📜urls.py        //-&gt; your backend new routes here
+ ┃ ┗ 📜requirements.txt //-&gt; your backend libs here
+ ┣ 📂app
+ ┃ ┣ 📂public
+ ┃ ┃ ┣ 📜[...]          //-&gt; custom icons / app name / embbed js libs
+ ┃ ┣ 📂src
+ ┃ ┃ ┣ 📜i18n.ts        //-&gt; your translations
+ ┃ ┃ ┣ 📜index.tsx      //-&gt; call frontend Munity framework
+ ┃ ┃ ┣ 📜store.ts       //-&gt; your frontend store
+ ┃ ┃ ┗ 📜styles.scss    //-&gt; your frontend style
+ ┃ ┣ 📜package.json     //-&gt; your frontend libraries
+ ┣ 📜.env               //-&gt; your platform settings
+ ┣ 📜docker-compose.yml //-&gt; your services
+</code></pre>
+<h2 id="frontend-the-srcindexts-file">Frontend, the src/index.ts file</h2>
+<p>The is the root of your frontend application.
+Munity is invoked here. First Munity Proverds, then Munity main component. This main component take many params to tweak default behavior :</p>
+<pre><code class="language-jsx">&lt;MunityApp
+    // Cosmetic components
+    logoLogin={logo}
+    loadingWorkspace={LoadingMunity}
+
+    // Functionnal components
+    overmindSidebar={&lt;MunityOvermindSidebar /&gt;}
+    workspaceNavbar={&lt;Navbar
+        leftPart={NavbarLeft}
+        centerPart={NavbarCenter}
+        rightPart={NavbarRight}
+    /&gt;}
+    overmindNavbar={&lt;OvermindNavbar
+        leftPart={OvermindNavbarLeft}
+        centerPart={OvermindNavbarCenter}
+        rightPart={OvermindNavbarRight}
+    /&gt;}
+
+    // Routes
+    newOvermindRoutes={[
+        // &lt;Route key={'overmind_youpibanana'} path=&quot;/youpibanana&quot; component={() =&gt; &lt;&gt;Overmind Youpi Banana \o/&lt;/&gt;} /&gt;
+    ]}
+    newWorkspaceRoutes={[
+        // &lt;Route key={'workspace_youpibanana'} path=&quot;/workspace/:workspace_slug/youpibanana&quot; component={() =&gt; &lt;&gt;Workspace Youpi Banana \o/&lt;/&gt;} /&gt;
+    ]}
+&gt;
+    {/* Custom routes outsite of overmind or workspace, usefull for fullscreen pages*/}
+    {/* &lt;Route path=&quot;/maps/:location/only_active&quot; component={((location: string) =&gt; MapFullscreen({ location }))} /&gt; */}
+&lt;/MunityApp&gt;
+</code></pre>
+<h2 id="backend-the-projetsettingspy-file">Backend, the projet/settings.py file</h2>
+<p>This is main configuraiton file for your application. Munity is already bootstrapped inside and you can extend as a standard Django Rest Framework application behavior.</p>
+<p>This file is pretty big so we only show interesting parts :</p>
+<pre><code class="language-py"># [...]
+
+# Application definition
+INSTALLED_APPS = [
+    # Munity is load here
+    &quot;munity&quot;,
+    &quot;munity.generic_groups&quot;,
+    &quot;munity.users&quot;,
+    &quot;munity.workspaces&quot;,
+    &quot;munity.authorization&quot;,
+    &quot;munity.records&quot;,
+    &quot;munity.settings&quot;,
+    # App
+    # Add your applications here (ex: &quot;myapp&quot; will refear ./api/myapp directory)
+    # See this documentation to create your apps : https://docs.djangoproject.com/en/3.2/intro/tutorial01/#creating-the-polls-app
+]
+
+# [...]
+
+MIDDLEWARE = [
+    # [...]
+    # Add your middleware here
+]
+
+# [...]
+#  If you extend user model you can change the default model user here
+AUTH_USER_MODEL = &quot;users.User&quot;
+
+</code></pre>
+<h3 id="add-new-route">Add new route</h3>
 <h2 id="improve-navbars">Improve navbars</h2>
 <h2 id="change-layout">Change layout</h2>
 <h2 id="change-current-theme">Change current theme</h2>
@@ -153,7 +219,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../gethelp/" class="btn btn-neutral float-right" title="Get help">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../managecustomcontent/" class="btn btn-neutral float-right" title="Manage custom content">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../howtostart/" class="btn btn-neutral" title="How to start"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -185,7 +251,7 @@
       <span><a href="../howtostart/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../gethelp/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../managecustomcontent/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
