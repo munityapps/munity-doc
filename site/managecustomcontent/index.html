@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  
-  
+  <meta name="author" content="GPLv3">
+  <link rel="canonical" href="https://doc.munityapps.com/managecustomcontent/">
   <link rel="shortcut icon" href="../img/favicon.ico">
   <title>Manage custom content - Munity documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Manage custom content";
     var mkdocs_page_input_path = "managecustomcontent.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/managecustomcontent/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -52,6 +52,10 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../howtostart/">How to start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../customize/">Customize</a>
                     </li>
                 </ul>
                 <ul>
@@ -99,6 +103,8 @@
     
     <li>Manage custom content</li>
     <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/munityapps/munity-doc/edit/master/docs/managecustomcontent.md"> Edit on Munity doc</a>
       
     </li>
   </ul>
@@ -281,37 +287,20 @@ const store = configureStore({
 export default store;
 </code></pre>
 <p>4. Now you can use your new component anyware in your application :</p>
-<p>```typescript</p>
-<p>import { TicketForm } from "./form";
-import { TicketList } from "./list";
-import { Ticket, useDeleteTicketMutation, useGetTicketsQuery } from "./slice";</p>
-<p>import './style.scss';</p>
-<p>const NotesList = (props: {notes: Array<Note>})  =&gt; {
-    const [deleteNote, { isLoading: isDeleting, isError: deleteError, isSuccess: deleteSuccess }] = useDeleteNoteMutation();</p>
-<pre><code>return &lt;div className={'notes-list-wrapper'}&gt;
-    &lt;h1 className='title'&gt;Notes&lt;/h1&gt;
-    &lt;div className={'notes-list'}&gt;
-        {props.notes?.map((note: Note) =&gt; {
-            return &lt;div key={note.id} className='note-item'&gt;
-                &lt;div className='note-title title'&gt;{note.name}&lt;/div&gt;
-                &lt;div style={{position: 'absolute', right: '8px', top: '4px', display: 'flex'}}&gt;
-                    { note.generic_groups.map((group) =&gt; {
-                        return &lt;Tags groupId={group} /&gt;
-                    })}
-                &lt;/div&gt;
-                &lt;div className='note-description description'&gt;{note.description}&lt;/div&gt;
-                &lt;UserAvatar userId={note.created_by} /&gt;
-                &lt;div className='relative-open-form-btn action-buttons'&gt;
-                    &lt;OpenFormButton edition header={'Editer une note'} form={&lt;NoteForm note={note} closeModal={() =&gt; null} step={null}/&gt;} /&gt;
-                    &lt;DeleteButton deleteFunction={() =&gt; deleteNote(note.id)}/&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        })}
+<pre><code class="language-typescript">import './style.scss';
+import TicketTable from './list';
+import { useGetTicketsQuery, User } from './slice';
+
+const TicketsList = ()  =&gt; {
+    const { data: tickets, error:errorGettingTickets, isFetching:isFetchingTicket, isLoading:isLoadingTicket} = useGetTicketsQuery();
+
+    return &lt;div style={{width: '100%', padding: '120px 64px 64px 64px'}}&gt;
+        &lt;TicketTable tickets={tickets?.results)} /&gt;
     &lt;/div&gt;
-&lt;/div&gt;
+}
+
+export default TicketsList;
 </code></pre>
-<p>}</p>
-<p>export default NotesList;</p>
               
             </div>
           </div>

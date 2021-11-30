@@ -1,3 +1,7 @@
+---
+description: Munity documentation
+---
+
 # Welcome to Munity documentation
 
 This document has been generated to this repository : https://github.com/munityapps/munity-doc
