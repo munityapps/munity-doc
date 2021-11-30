@@ -93,15 +93,3 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = "users.User"
 
 ```
-
-### Add new route
-
-## Improve navbars
-
-## Change layout
-
-## Change current theme
-
-## How to extend currend user
-
-## How to create group categories

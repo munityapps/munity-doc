@@ -208,37 +208,17 @@ export default store;
 4\. Now you can use your new component anyware in your application :
 
 ```typescript
-
-import { TicketForm } from "./form";
-import { TicketList } from "./list";
-import { Ticket, useDeleteTicketMutation, useGetTicketsQuery } from "./slice";
-
 import './style.scss';
+import TicketTable from './list';
+import { useGetTicketsQuery, User } from './slice';
 
-const NotesList = (props: {notes: Array<Note>})  => {
-    const [deleteNote, { isLoading: isDeleting, isError: deleteError, isSuccess: deleteSuccess }] = useDeleteNoteMutation();
+const TicketsList = ()  => {
+    const { data: tickets, error:errorGettingTickets, isFetching:isFetchingTicket, isLoading:isLoadingTicket} = useGetTicketsQuery();
 
-    return <div className={'notes-list-wrapper'}>
-        <h1 className='title'>Notes</h1>
-        <div className={'notes-list'}>
-            {props.notes?.map((note: Note) => {
-                return <div key={note.id} className='note-item'>
-                    <div className='note-title title'>{note.name}</div>
-                    <div style={{position: 'absolute', right: '8px', top: '4px', display: 'flex'}}>
-                        { note.generic_groups.map((group) => {
-                            return <Tags groupId={group} />
-                        })}
-                    </div>
-                    <div className='note-description description'>{note.description}</div>
-                    <UserAvatar userId={note.created_by} />
-                    <div className='relative-open-form-btn action-buttons'>
-                        <OpenFormButton edition header={'Editer une note'} form={<NoteForm note={note} closeModal={() => null} step={null}/>} />
-                        <DeleteButton deleteFunction={() => deleteNote(note.id)}/>
-                    </div>
-                </div>
-            })}
-        </div>
+    return <div style={{width: '100%', padding: '120px 64px 64px 64px'}}>
+        <TicketTable tickets={tickets?.results)} />
     </div>
 }
 
-export default NotesList;
+export default TicketsList;
+```
