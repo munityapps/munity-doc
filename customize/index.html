@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Customize - Munity documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Customize";
+    var mkdocs_page_input_path = "customize.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Munity documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">What is Munity</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../howtostart/">How to start</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Customize</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#improve-logo-navbars-sidebar-and-loader">Improve logo, navbars, sidebar and loader</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#change-layout">Change layout</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-extend-current-user">How to extend current user</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-create-group-categories">How to create group categories</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../importantfile/">Important files</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../managecustomcontent/">Manage custom content</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../gethelp/">Get help</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Munity documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Customize</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="customize-munity">Customize munity</h1>
+<p>Please see the <a href="../managecustomcontent/">manage custom content</a> to know how to add custom content.</p>
+<h2 id="improve-logo-navbars-sidebar-and-loader">Improve logo, navbars, sidebar and loader</h2>
+<p>You can write your own navbar and inject its directly on MunityApp component has below :</p>
+<pre><code class="language-typescript">&lt;MunityApp
+    logoLogin={logo}
+    overmindNavbar={
+        &lt;OvermindNavbar
+            leftPart={OvermindNavbarLeft}
+            centerPart={() =&gt; &lt;div /&gt;}
+            rightPart={OvermindNavbarRight}
+        /&gt;
+    }
+    workspaceNavbar={&lt;Navbar
+        leftPart={WorkspaceNavbarLeft}
+        centerPart={() =&gt; &lt;div/&gt;}
+        rightPart={NavbarRight}
+    /&gt;}
+    overmindSidebar={&lt;OvermindSidebar /&gt;}
+    loadingWorkspace={() =&gt;
+        &lt;div className=&quot;app-loading&quot;&gt;
+            &lt;img src={logo} alt=&quot;Logo&quot; /&gt;
+            &lt;ProgressSpinner /&gt;
+        &lt;/div&gt;
+    }
+&gt;
+</code></pre>
+<h2 id="change-layout">Change layout</h2>
+<p>1. You can change CSS variables in your CSS file.</p>
+<pre><code class="language-css">@charset &quot;UTF-8&quot;;
+:root {
+    --surface-a:#ffffff;
+    --surface-b:#faf9f8;
+    --surface-c:#f3f2f1;
+    --surface-d:#edebe9;
+    --text-color:#323130;
+    --primary-color:rgb(250, 170, 65);
+    --primary-color-text:#333;
+    --secondary-color: rgb(197, 122, 23);
+    --secondary-color-text:#605e5c;
+    --content-padding:1rem;
+    --inline-spacing:0.5rem;
+    --error-color: #ef9a9a;
+    --valid-color: #54b358;
+    --box-shadow: #777;
+}
+</code></pre>
+<p>2. You can also generate a full template from primereact, we are 100% compatible</p>
+<p><a href="https://www.primefaces.org/designer-react/#/">PRIME DESIGNER</a></p>
+<p>3. Finally feel free to override what you want in your CSS.</p>
+<h2 id="how-to-extend-current-user">How to extend current user</h2>
+<p>By default the user used by Munity backend is from <code>./projects/settings.py</code> :</p>
+<pre><code class="language-py"># [...]
+INSTALLED_APPS = [
+    &quot;munity.users&quot;,
+    # [...]
+]
+# [...]
+AUTH_USER_MODEL = &quot;users.User&quot;
+# [...]
+</code></pre>
+<p>You can if you want extend the user model with a 1 - 1 relation (Proxy Model). Django explain this <a href="https://docs.djangoproject.com/en/3.2/topics/db/models/#proxy-models">here</a>.</p>
+<p>To so you have to extend user model :</p>
+<pre><code class="language-py">from munity.users.models import User
+
+class AppUser(User):
+    role = models.CharField(max_length=30)
+    age = models.CharField(max_length=30)
+    computer = models.ForeignKey(Computer, related_name='computer_user', on_delete=SET_NULL, blank=True, null=True)
+</code></pre>
+<p>Then adapt your <code>project/settings.py</code> :</p>
+<pre><code class="language-py"># [...]
+INSTALLED_APPS = [
+    &quot;munity.users&quot;,
+    # [...]
+]
+# [...]
+AUTH_USER_MODEL = &quot;appuser.AppUser&quot;
+# [...]
+</code></pre>
+<p>Since a User model is linked to an AppUser, application works as expected with an extended user.</p>
+<h2 id="how-to-create-group-categories">How to create group categories</h2>
+<p>We recommand to use <a href="https://docs.djangoproject.com/en/3.2/topics/db/models/#proxy-models">Proxy Model</a> also to create your own categories and keep <code>Generic Group system</code>.</p>
+<p>For exemple you can create a <code>Building</code> group and a <code>TicketType</code> group then assign its independently to a <code>Ticket</code> mode :</p>
+<p><strong>On buildings/models.py</strong></p>
+<pre><code class="language-py">from munity.generic_groups.models import GenericGroup
+class Building(GenericGroup):
+    total_floor = models.PositiveIntegerField(default=0)
+    address = models.CharField(max_length=256)
+</code></pre>
+<p><strong>On tickettypes/models.py</strong></p>
+<pre><code class="language-py">from munity.generic_groups.models import GenericGroup
+class TicketType(GenericGroup):
+    type = models.CharField(max_length=256)
+</code></pre>
+<p><strong>On ticket/models.py</strong></p>
+<pre><code class="language-py">class Ticket(MunityModel):
+    #[...]
+    building = models.ForeignKey(&quot;buildings.Building&quot;, related_name='building_tickets', on_delete=SET_NULL, blank=True, null=True)
+    type = models.ForeignKey(&quot;tickettypes.TicketType&quot;, related_name='type_tickets', on_delete=SET_NULL, blank=True, null=True)
+</code></pre>
+<p>You can now use specific group on your <code>Ticket</code> model without creating custom tables.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../importantfile/" class="btn btn-neutral float-right" title="Important files">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../howtostart/" class="btn btn-neutral" title="How to start"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../howtostart/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../importantfile/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
